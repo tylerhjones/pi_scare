@@ -1,0 +1,16 @@
+
+# become root
+su -i == 'root'
+
+# export the gpio pin
+echo "4" > /sys/class/gpio/export
+
+# set the pin to input (not an output)
+echo "in" > /sys/class/gpio/gpio4/direction
+
+# check the pin
+cat /sys/class/gpio/gpio4/value
+# should be a 1
+
+# clean up when done
+echo "4" > /sys/class/gpio/unexport
